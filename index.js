@@ -1,11 +1,32 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 const keys = require('./config/keys');
+require('./models/Users');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
 
+mongoose.connection.on('error', function(error) {
+  console.error('Database connection error:', error);
+});
+
+mongoose.connection.once('open', function() {
+  console.log('Database connected');
+});
+
 const app = express();
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 1000,
+    keys: [keys.cookie]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 
