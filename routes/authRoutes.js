@@ -13,7 +13,6 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
-    console.log(req.user + 1111);
     res.send(req.user);
   });
 };
