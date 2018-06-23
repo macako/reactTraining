@@ -1,3 +1,21 @@
+const keys = required('../../config/keys');
+
 module.exports = survey => {
-  return '<div>' + survey.body + '</div>';
+  return `
+    <html>
+      <body>
+        <div style="text-align: center;">
+          <h3> I'd like your input! </h3>
+          <p>Please answer the following question:</p>
+          <p>${survey.body}</p>
+        </div>
+        <div style="text-align: center;">
+          <a href="${keys.redirectDomain}/api/surveys/thanks">Yes</a>
+        </div>
+        <div style="text-align: center;">
+          <a href="${keys.redirectDomain}/api/surveys/thanks">No</a>
+        </div>
+      </body>
+    </html>;
+    `;
 };
