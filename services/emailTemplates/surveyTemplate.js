@@ -1,4 +1,4 @@
-const keys = required('../../config/keys');
+const keys = require('../../config/keys');
 
 module.exports = survey => {
   return `
