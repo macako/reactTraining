@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
@@ -17,10 +17,15 @@ mongoose.connection.on('error', error => {
 mongoose.connection.once('open', () => {
   console.log('Database connected');
 });
+*/
 
 const app = express();
 
-app.use(bodyParser.json());
+app.get('/', (req, res) => {
+  res.send({ hi: 'hello macako' });
+});
+
+/*app.use(bodyParser.json());
 
 app.use(
   cookieSession({
@@ -46,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-}
+}*/
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
