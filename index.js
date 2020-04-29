@@ -1,11 +1,11 @@
 const express = require('express');
-/*const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
-require('./models/Survey');
+//require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -17,15 +17,10 @@ mongoose.connection.on('error', error => {
 mongoose.connection.once('open', () => {
   console.log('Database connected');
 });
-*/
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send({ hi: 'hello macako' });
-});
-
-/*app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 app.use(
   cookieSession({
@@ -38,10 +33,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
-require('./routes/billingRoutes')(app);
-require('./routes/surveyRoutes')(app);
+//require('./routes/billingRoutes')(app);
+//require('./routes/surveyRoutes')(app);
 
-if (process.env.NODE_ENV === 'production') {
+/*if (process.env.NODE_ENV === 'production') {
   // Express will serve up producttion assets
   //like our main.js file, or main.css file!!
   app.use(express.static('client/build'));
