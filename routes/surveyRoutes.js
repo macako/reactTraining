@@ -3,7 +3,6 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
-
 const Survey = mongoose.model('survey');
 
 module.exports = app => {
@@ -24,6 +23,7 @@ module.exports = app => {
     });
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
+
     try {
       await mailer.send();
       await survey.save();
@@ -32,7 +32,7 @@ module.exports = app => {
 
       res.send(user);
     } catch (e) {
-      res, status(422).send(err);
+      res.status(422).send(err);
     }
   });
 };
